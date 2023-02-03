@@ -1,0 +1,9 @@
+1. With a parent_child struct that keeps track of all the necessary data.
+2. int exit_status;
+   int alive_count;
+   struct lock pcLock;
+   struct list_elem elem;
+   tid_t childId;
+   const char* file_name;
+   struct semaphore waitSema;
+3. A lock for the alive_count and a semaphore for waiting for the child to start.

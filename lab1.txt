@@ -1,0 +1,24 @@
+Preperatory 0:
+a) The system calls function as an interface to bridge the gap between the user and the kernel.
+b) It allows the processor to switch context to kernel mode.
+
+Preperatory 1:
+a) It takes the system call number as a parameter.
+b) The interrupt stores the arguments in 4 registers.
+
+Preperatory 2:
+a) The user stack starts at 0xc0000000, the kernel stack starts at 0x08048000
+b) With a pointer saved in a register in the interrupt.
+c) To seperate the kernel from the user.
+
+Preperatory 3:
+a) The user memory
+b) The system call passes a pointer to it.
+c) If the pointer is null, pointing above PHYS_BASE or pointing to an unmapped position.
+d) We can check the validity of the pointer before dereferencing it.
+
+Preperatory 4:
+Because it needs to switch to kernel context before it can edit the disk.
+
+Preperatory 5:
+SKIP

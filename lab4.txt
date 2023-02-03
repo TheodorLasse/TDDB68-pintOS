@@ -1,0 +1,2 @@
+1. argc is the number of args for the function and argv is the pointer to the pointer of the first element (the array).
+2. They are stored on the stack.

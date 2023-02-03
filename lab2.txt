@@ -1,0 +1,3 @@
+1. Busy waiting is when the CPU is run at 100% waiting for its turn with a resource, e.g sitting in a while loop.
+2. Sleep causes the thread to suspend itself for a duration while yield suspends the thread and puts it at the back of the ready queue.
+3. Locks cannot be shared and semaphores can have more choices than locked/unlocked. A deadlock is when the program is stuck because threads waiting for each other without any of them making any progress.

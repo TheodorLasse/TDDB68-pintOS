@@ -1,0 +1,31 @@
+Preparatory questions:
+1. Locking the whole file system would cripple the entire OS since only a single thread could access files at a time.
+2. You can't read and write a file at the same time without causing them to unsync and corrupt the data. 
+A variation is that writers are the ones allowed to be multiple of instead of readers. 
+
+pseudo code is first algorithm presented here:
+https://en.wikipedia.org/wiki/Readers%E2%80%93writers_problem
+
+3. A file is read, then the file is edited from another thread and then the first thread saves the file with their own changes. 
+This would erase any change created by the second thread.
+
+4. The inode object matches a place in memory where the file is a name for a place in memory.
+
+5. "AAA"
+
+Before implementation questions:
+1. File_open returns an inode and filesys_open returns a file object. Meaning file_open is closer to the disk.
+2. inode_close, inode_open, inode_read_at, inode_allow_write, inode_write_at
+3. The file name from the directory is removed first, the content is removed when the file's readers have closed their file.
+4. It waits until all readers have closed the file.
+5. The file struct maintains this information. 
+6. No.
+7. inode_create, inode_close.
+8. inode, because multiple files can point to the same inode and we want consistent data handling on the disk. 
+9. If exec systemcall opens the same file multiple times we want the data to be consistent.
+
+Demonstration questions:
+
+The file is locked as long as some process is reading it so the first process to access the file will lock it until it is done. 
+If lookup is first, remove will wait for the readers to be done and vice versa. 
+We have a lock for open and close to keep the readcount consistent and the open_inodes list intact.
